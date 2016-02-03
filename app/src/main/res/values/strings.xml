@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">LifeCount</string>
+    <string name="action_settings">New Counter</string>
+    <string name="action_about">About</string>
+    <string name="secondactivity1">
+        Welcome to use LifeCount\n</string>
+    <string name="secondactivity2">
+        按下面的OK按钮来创建一个新的生命倒计时
+    </string>
+    <string name="title_activity_question">Question</string>
+    <string name="q1">Q1:你的性别</string>
+    <string name="q2">Q2:你是否与家人联系密切，与朋友经常相聚？</string>
+    <string name="q3">Q3:如何评估你目前的压力水平？</string>
+    <string name="q4">Q4:你是否善于自我减压？</string>
+    <string name="q5">Q5:你平均每天的睡眠时间？</string> <!--3～5 和6小时以上-->
+    <string name="q6">Q6:你接受过多少年的正规教育？</string> <!--＊16年以上和8年以下-->
+    <string name="q7">Q7:你平均一周的工作时间多长？</string> <!--＊低于40小时 和高于-->
+    <string name="q8">Q8:你居住地区的空气环境如何？</string>
+    <string name="q9">Q9:你是否有喝咖啡的习惯？</string>
+    <string name="q10">Q10:你是否有吸烟的习惯？</string> <!--＊不吸，10以内，20以内，20以上，不吸但经常二手-->
+    <string name="q11">Q11:你是否有喝酒的习惯？</string><!--＊不喝或很少喝，-->
+    <string name="q12">Q12:你是否从事危险性工作？</string>
+    <string name="q13">Q13:你一周吃多少次快餐或熟食？</string> <!--＊不吃或很少，5次以上-->
+    <string name="q14">Q14:你一周吃多少次烧烤的鱼，家禽或肉类？</string><!--＊同上-->
+    <string name="q15">Q15:你是否经常吃大量的甜食，如冰激凌，蛋糕，糖果等？</string>
+    <string name="q16">Q16:你如何评估自己的体重水平？</string>
+    <string name="q17">Q17:你一周锻炼超过30分钟的天数？</string>
+    <string name="q18">Q18:你排便是否规律？</string>
+    <string name="q19">Q19:你是否曾经得过重大疾病？</string>
+    <string name="q20">Q20:你的直系亲属是否有三人或三人以上患糖尿病或心脏疾病？</string>
+    <string name="q21">Q21:你的直系亲属是否有两人或两人以上患有癌症？</string>
+    <string name="q22">Q22:你的直系亲属中是否有人活到90岁？</string>
+    <string name="about">\t\t\t首先要声明的是，生命预测的那几个问题是非常简易的，要用来预测不可莫测的生命是完全做不到的。
+        而且我认为永远不会存在能精确预测生命的东西，但这些与这个软件要传达的理念并无冲突。\n
+        \t\t\t这个理念叫做向死而生，对我影响比较大的是关于这个话题的人有两个，一个是乔布斯，他在2005年斯坦福大学毕业典礼上的演讲是非常经典的一篇演讲。
+        乔布斯共讲了三个故事，我认为最重要的就是第三个故事，关于死亡的故事，人人都会死亡，意识到自己有一天会死会让你做任何事情都遵从自己的内心。
+        另一个人是罗振宇，他在罗辑思维的开篇就是向死而生，这个理念和乔布斯讲的基本相同。\n
+        \t\t\t但是知道这个理念和让其影响自己的行为是两种层次，因为自己有严重的拖延症，我曾经花了不少时间来研究拖延症，它的原理要涉及到人的两种意识，一种是主观意识，另一种是潜意识，人的身体在绝大部分时间都是由潜意识控制的
+        而潜意识是原始的，不理智的，它不会时时想到向死而生，所以这就是生命倒计时存在的价值：时刻提醒自己，你所拥有的时间不多，请珍惜\n
+        \t\t\t有一次，我在浏览网页时看到一款手表，可以显示生命的倒计时，非常喜欢，但查询了价格要近500元，而且外观设计的比较丑陋，所以放弃购买。但是这件事提醒了我，现在的智能机这么强大，做一款生命倒计时的软件简直轻而易举，可惜我搜遍了苹果的App Store和安卓的各大软件市场都没有找到这样的软件
+        最后只能用倒计时软件勉强替代。\n
+        \t\t\t直到有一天，我脑中灵光一闪，你不是在自学安卓编程吗？为什么不能自己写？于是就诞生了这款软件。\n
+        \t\t\t真诚的希望大家能喜欢这款软件，如果使用中发现什么问题，或有什么建议，可以给我发邮件: simon_cao@hotmail.com
+    </string>
+</resources>
