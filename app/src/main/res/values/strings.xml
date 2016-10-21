@@ -42,4 +42,6 @@
         \t\t\t直到有一天，我脑中灵光一闪，你不是在自学安卓编程吗？为什么不能自己写？于是就诞生了这款软件。\n
         \t\t\t真诚的希望大家能喜欢这款软件，如果使用中发现什么问题，或有什么建议，可以给我发邮件: simon_cao@hotmail.com
     </string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

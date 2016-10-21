@@ -113,14 +113,6 @@ public class Question extends BaseActivity {
 
 
 
-
-
-
-
-
-
-
-
         //将输入生日的代码放在最下面的Button触发方法里
         button=(Button)findViewById(R.id.setBirthday);
         button.setOnClickListener(new View.OnClickListener() {
@@ -264,8 +256,6 @@ public class Question extends BaseActivity {
                 dpd.show();//显示DatePickerDialog组件
             }
         });
-
-
     }
 
     private DatePickerDialog.OnDateSetListener Datelistener=new DatePickerDialog.OnDateSetListener()

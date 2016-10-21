@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity {
             startActivity(intent);
         }else{
             try{
-                deathday=dt.parse(deathString);
+                deathday=dt.parse(deathString); //deathday在这里被转成时间格式
             }catch (Exception e){
                 e.printStackTrace();
             }
