@@ -9,22 +9,20 @@ import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.RemoteViews;
-import android.widget.TextView;
+
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 public class LiftCount_Service extends Service {
 
     DateFormat dt=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     String deathString;
     Date deathday;
-    TextView count;
-    CountDownTimer cdt;
+    CountDownTimer cdt2;
 
     public LiftCount_Service() {
     }
@@ -38,10 +36,25 @@ public class LiftCount_Service extends Service {
 
     public void onCreate(){
         super.onCreate();
+        updateWidget();
+        Log.d("Tag","Service Created");
+        stopSelf();
+    }
+
+    public int onStartCommand(Intent intent,int flags,int startId){
+        return super.onStartCommand(intent,flags,startId);
+    }
+
+    public void onDestroy(){
+        super.onDestroy();
+        Log.d("Tag","Service Destroyed");
+        cdt2=null;
+    }
+
+    private void updateWidget(){
         //从SharedPreference中获取死亡日期的String值: deathString
         SharedPreferences share=getSharedPreferences("Data",MODE_PRIVATE);
         deathString=share.getString("Time","default");
-        Log.d("Tag",deathString);
 
         //deathday在这里被转成时间格式
         if(deathString.equals("default")){
@@ -60,9 +73,11 @@ public class LiftCount_Service extends Service {
             Long lifetime = deathday.getTime() - current.getTime();
 
             //设置倒计时
-            cdt = new CountDownTimer(lifetime, 1000) {
+            cdt2 = new CountDownTimer(lifetime, 1000) {
                 @Override
+
                 public void onTick(long millisUntilFinished) {
+
                     Long day = millisUntilFinished / 1000 / 60 / 60 / 24;
                     Long hour = (millisUntilFinished - day * 1000 * 60 * 60 * 24) / 1000 / 60 / 60;
                     Long minute = (millisUntilFinished - day * 1000 * 60 * 60 * 24 - hour * 1000 * 60 * 60) / 1000 / 60;
@@ -87,8 +102,8 @@ public class LiftCount_Service extends Service {
                         Tsecond = "0" + second;
                     }
 
-                    String count = day + "天 " + Thour + "时 " + Tminute + "分 " + Tsecond + "秒";
-//                count.setText(day+"天 "+Thour+"时 "+Tminute+"分 "+Tsecond+"秒");
+                    String count=day+"天 "+Thour+"时";
+//                    String count = day + "天 " + Thour + "时 " + Tminute + "分 " + Tsecond + "秒";
 
                     RemoteViews rv = new RemoteViews(getPackageName(), R.layout.life__count);
                     rv.setTextViewText(R.id.appwidget_text, count);
@@ -98,18 +113,13 @@ public class LiftCount_Service extends Service {
                 }
 
                 public void onFinish() {
-                    count.setText(" See you in Heaven ");
+
                 }
             };
-            CounterCollector.addCounter(cdt);
-            cdt.start();
+//            CounterCollector.addCounter(cdt2);
+            cdt2.start();
         }
     }
 
-
-    public void onDestroy(){
-        super.onDestroy();
-        cdt=null;
-    }
 
 }

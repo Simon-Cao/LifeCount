@@ -110,7 +110,7 @@ public class MainActivity extends BaseActivity {
 
                 }
             };
-            CounterCollector.addCounter(cdt);
+//            CounterCollector.addCounter(cdt);
             cdt.start();
 
         }
