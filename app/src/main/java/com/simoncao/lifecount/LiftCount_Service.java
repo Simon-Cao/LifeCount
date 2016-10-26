@@ -15,6 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.StringTokenizer;
 
 
 public class LiftCount_Service extends Service {
@@ -22,7 +23,7 @@ public class LiftCount_Service extends Service {
     DateFormat dt=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     String deathString;
     Date deathday;
-    CountDownTimer cdt2;
+
 
     public LiftCount_Service() {
     }
@@ -48,7 +49,6 @@ public class LiftCount_Service extends Service {
     public void onDestroy(){
         super.onDestroy();
         Log.d("Tag","Service Destroyed");
-        cdt2=null;
     }
 
     private void updateWidget(){
@@ -72,16 +72,12 @@ public class LiftCount_Service extends Service {
             Date current = ca.getTime();
             Long lifetime = deathday.getTime() - current.getTime();
 
-            //设置倒计时
-            cdt2 = new CountDownTimer(lifetime, 1000) {
-                @Override
 
-                public void onTick(long millisUntilFinished) {
 
-                    Long day = millisUntilFinished / 1000 / 60 / 60 / 24;
-                    Long hour = (millisUntilFinished - day * 1000 * 60 * 60 * 24) / 1000 / 60 / 60;
-                    Long minute = (millisUntilFinished - day * 1000 * 60 * 60 * 24 - hour * 1000 * 60 * 60) / 1000 / 60;
-                    Long second = (millisUntilFinished - day * 1000 * 60 * 60 * 24 - hour * 1000 * 60 * 60 - minute * 1000 * 60) / 1000;
+                    Long day = lifetime/ 1000 / 60 / 60 / 24;
+                    Long hour = (lifetime - day * 1000 * 60 * 60 * 24) / 1000 / 60 / 60;
+                    Long minute = (lifetime- day * 1000 * 60 * 60 * 24 - hour * 1000 * 60 * 60) / 1000 / 60;
+                    Long second = (lifetime - day * 1000 * 60 * 60 * 24 - hour * 1000 * 60 * 60 - minute * 1000 * 60) / 1000;
 
                 /*小于10秒的时候，秒数会变成一位数，这个时候整条TextView会缩短一截，然后到了两位数的秒数的时候，又会突然增长一截
                   这样非常影响客户体验，所以添加了下面的判断，当秒数小于10的时候，在前面多打一个0，完美解决
@@ -102,24 +98,19 @@ public class LiftCount_Service extends Service {
                         Tsecond = "0" + second;
                     }
 
-                    String count=day+"天 "+Thour+"时";
+                    String count=day+"天";
+                    String count2=Thour+"时";
 //                    String count = day + "天 " + Thour + "时 " + Tminute + "分 " + Tsecond + "秒";
 
                     RemoteViews rv = new RemoteViews(getPackageName(), R.layout.life__count);
                     rv.setTextViewText(R.id.appwidget_text, count);
+                    rv.setTextViewText(R.id.appwidget_text2,count2);
                     AppWidgetManager manager = AppWidgetManager.getInstance(getApplicationContext());
                     ComponentName cn = new ComponentName(getApplicationContext(), Life_Count.class);
                     manager.updateAppWidget(cn, rv);
-                }
 
-                public void onFinish() {
+            }
 
-                }
-            };
-//            CounterCollector.addCounter(cdt2);
-            cdt2.start();
         }
-    }
-
 
 }
