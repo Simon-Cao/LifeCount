@@ -7,18 +7,9 @@
         android:id="@+id/appwidget_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:textStyle="bold"
-        android:textSize="20sp" />
+        android:gravity="end"
+        android:text="Please set a Lifecount"
+        android:textSize="15sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/counter"
-        android:layout_centerHorizontal="true"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:text="Your life is only left"/>
 
 </RelativeLayout>

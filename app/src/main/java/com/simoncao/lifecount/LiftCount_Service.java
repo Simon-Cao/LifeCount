@@ -1,5 +1,7 @@
 package com.simoncao.lifecount;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
@@ -22,6 +24,7 @@ public class LiftCount_Service extends Service {
 
     DateFormat dt=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     String deathString;
+    SharedPreferences share;
     Date deathday;
     TextView count;
     CountDownTimer cdt;
@@ -35,13 +38,26 @@ public class LiftCount_Service extends Service {
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
-
     public void onCreate(){
         super.onCreate();
+        Notification notification=new Notification(R.drawable.abc_ab_share_pack_holo_dark,"Value your life",System.currentTimeMillis());
+        Intent intent=new Intent(this,MainActivity.class);
+        PendingIntent pendingIntent=PendingIntent.getActivity(this,0,intent,0);
+        notification.setLatestEventInfo(this,"Value your life","Life is short",pendingIntent);
+        startForeground(1,notification);
+    }
+
+    public int onStartCommand(Intent intent,int flags,int startId){
+        updateView();
+        return super.onStartCommand(intent,flags,startId);
+    }
+
+    public void updateView(){
+
         //从SharedPreference中获取死亡日期的String值: deathString
-        SharedPreferences share=getSharedPreferences("Data",MODE_PRIVATE);
+        share=getSharedPreferences("Data",MODE_PRIVATE);
         deathString=share.getString("Time","default");
-        Log.d("Tag",deathString);
+
 
         //deathday在这里被转成时间格式
         if(deathString.equals("default")){
@@ -87,21 +103,22 @@ public class LiftCount_Service extends Service {
                         Tsecond = "0" + second;
                     }
 
-                    String count = day + "天 " + Thour + "时 " + Tminute + "分 " + Tsecond + "秒";
-//                count.setText(day+"天 "+Thour+"时 "+Tminute+"分 "+Tsecond+"秒");
+                    String count = day + "\n" + Thour + ":" + Tminute + ":" + Tsecond;
+
 
                     RemoteViews rv = new RemoteViews(getPackageName(), R.layout.life__count);
                     rv.setTextViewText(R.id.appwidget_text, count);
                     AppWidgetManager manager = AppWidgetManager.getInstance(getApplicationContext());
                     ComponentName cn = new ComponentName(getApplicationContext(), Life_Count.class);
                     manager.updateAppWidget(cn, rv);
+
+                    Log.d("Tag","CountDownTimer Thread "+Thread.currentThread().getId());
                 }
 
                 public void onFinish() {
                     count.setText(" See you in Heaven ");
                 }
             };
-            CounterCollector.addCounter(cdt);
             cdt.start();
         }
     }
