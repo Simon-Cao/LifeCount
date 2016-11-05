@@ -43,7 +43,7 @@ public class LiftCount_Service extends Service {
         Notification notification=new Notification(R.drawable.abc_ab_share_pack_holo_dark,"Value your life",System.currentTimeMillis());
         Intent intent=new Intent(this,MainActivity.class);
         PendingIntent pendingIntent=PendingIntent.getActivity(this,0,intent,0);
-        notification.setLatestEventInfo(this,"Value your life","Life is short",pendingIntent);
+        notification.setLatestEventInfo(this,"Count Down Your Life, Make It Valuable","Time Is A Limited Source",pendingIntent);
         startForeground(1,notification);
     }
 
@@ -126,7 +126,7 @@ public class LiftCount_Service extends Service {
 
     public void onDestroy(){
         super.onDestroy();
-        cdt=null;
+        cdt.cancel();
     }
 
 }
