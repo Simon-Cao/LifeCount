@@ -7,8 +7,11 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.CountDownTimer;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.TextView;
@@ -40,10 +43,14 @@ public class LiftCount_Service extends Service {
 
     public void onCreate(){
         super.onCreate();
-        Notification notification=new Notification(R.drawable.abc_ab_share_pack_holo_dark,"Value your life",System.currentTimeMillis());
         Intent intent=new Intent(this,MainActivity.class);
         PendingIntent pendingIntent=PendingIntent.getActivity(this,0,intent,0);
-        notification.setLatestEventInfo(this,"Count Down Your Life, Make It Valuable","Time Is A Limited Source",pendingIntent);
+        NotificationCompat.Builder mbuild=new NotificationCompat.Builder(this);
+        mbuild.setSmallIcon(R.mipmap.time)
+                .setContentTitle("Count Down Your Life")
+                .setContentText("Time is limited source, Make it Valuable")
+                .setContentIntent(pendingIntent);
+        Notification notification=mbuild.build();
         startForeground(1,notification);
     }
 
