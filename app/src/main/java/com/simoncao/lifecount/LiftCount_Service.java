@@ -46,7 +46,7 @@ public class LiftCount_Service extends Service {
         Intent intent=new Intent(this,MainActivity.class);
         PendingIntent pendingIntent=PendingIntent.getActivity(this,0,intent,0);
         NotificationCompat.Builder mbuild=new NotificationCompat.Builder(this);
-        mbuild.setSmallIcon(R.mipmap.time)
+        mbuild.setSmallIcon(R.mipmap.sandglass)
                 .setContentTitle("Count Down Your Life")
                 .setContentText("Time is limited source, Make it Valuable")
                 .setContentIntent(pendingIntent);

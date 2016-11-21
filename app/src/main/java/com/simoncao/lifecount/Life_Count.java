@@ -32,15 +32,15 @@ public class Life_Count extends AppWidgetProvider {
 //        }
     }
 
-    private boolean isServiceRunning(Context context) {
-        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (LiftCount_Service.class.getName().equals(service.service.getClassName())) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    private boolean isServiceRunning(Context context) {
+//        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+//        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+//            if (LiftCount_Service.class.getName().equals(service.service.getClassName())) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
 
     @Override
